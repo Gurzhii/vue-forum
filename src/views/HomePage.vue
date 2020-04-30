@@ -7,7 +7,7 @@
 
 <script>
 import { threads, posts, users } from '@/data';
-import ThreadList from '../components/ThreadListComponent.vue';
+import ThreadList from '@/components/ThreadListComponent.vue';
 
 export default {
   name: 'HelloWorld',

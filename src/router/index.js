@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
-import ThreadShow from '@/views/ThreadShow.vue';
+import ThreadShowPage from '@/views/ThreadShowPage.vue';
 
 Vue.use(Router);
 
@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/thread/:id',
     name: 'ThreadShow',
-    component: ThreadShow,
+    component: ThreadShowPage,
     props: true,
   },
 ];
