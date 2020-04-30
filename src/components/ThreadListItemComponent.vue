@@ -8,7 +8,7 @@
       </p>
       <p class="text-faded text-xsmall">
         By
-        <a href="#">{{ user.username }}</a>, {{ thread.publishedAt }}.
+        <a href="#">{{ user.username }}</a>, <AppDateComponent :timestamp="thread.publishedAt"/>.
       </p>
     </div>
 
@@ -33,8 +33,12 @@
 
 <script>
 import { users } from '@/data';
+import AppDateComponent from './AppDateComponent.vue';
 
 export default {
+  components: {
+    AppDateComponent,
+  },
   props: {
     thread: {
       required: true,
