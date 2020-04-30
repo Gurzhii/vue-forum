@@ -1,22 +1,22 @@
 <template>
   <div class="col-full">
     <h1>Welcome to the Forum</h1>
-    <ThreadList :threads="threads"/>
+    <ForumListComponent :forums="forums"/>
   </div>
 </template>
 
 <script>
-import { threads, posts, users } from '@/data';
-import ThreadList from '@/components/ThreadListComponent.vue';
+import { forums, posts, users } from '@/data';
+import ForumListComponent from '@/components/ForumListComponent.vue';
 
 export default {
   name: 'HelloWorld',
   components: {
-    ThreadList,
+    ForumListComponent,
   },
   data() {
     return {
-      threads: Object.values(threads),
+      forums: Object.values(forums),
       posts,
       users,
     };

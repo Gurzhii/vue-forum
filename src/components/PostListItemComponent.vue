@@ -18,12 +18,8 @@
 
 <script>
 import { users } from '@/data';
-import AppDateComponent from './AppDateComponent.vue';
 
 export default {
-  components: {
-    AppDateComponent,
-  },
   props: {
     post: {
       required: true,
