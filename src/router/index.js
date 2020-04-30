@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld.vue';
+import HomePage from '@/views/HomePage.vue';
 import ThreadShow from '@/views/ThreadShow.vue';
 
 Vue.use(Router);
@@ -8,7 +8,7 @@ Vue.use(Router);
 const routes = [
   {
     path: '/',
-    component: HelloWorld,
+    component: HomePage,
   },
   {
     path: '/thread/:id',
