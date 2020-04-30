@@ -19,7 +19,6 @@
 
 <script>
 import ThreadListComponent from '@/components/ThreadListComponent.vue';
-import { forums, threads } from '@/data';
 
 export default {
   components: {
@@ -33,10 +32,10 @@ export default {
   },
   computed: {
     forum() {
-      return forums[this.id];
+      return this.$store.state.forums[this.id];
     },
     threads() {
-      return Object.values(threads)
+      return Object.values(this.$store.state.threads)
         .filter((thread) => thread.forumId === this.id);
     },
   },

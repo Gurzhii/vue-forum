@@ -9,15 +9,11 @@
       </span>
     </p>
     <PostListComponent :posts="posts"/>
-    <PostEditoComponent
-      :threadId="id"
-      @save="addPost"
-    />
+    <PostEditoComponent :threadId="id"/>
   </div>
 </template>
 
 <script>
-import { threads, posts, users } from '@/data';
 import PostListComponent from '@/components/PostListComponent.vue';
 import PostEditoComponent from '@/components/PostEditorComponent.vue';
 
@@ -34,21 +30,13 @@ export default {
   },
   data() {
     return {
-      thread: threads[this.id],
+      thread: this.$store.state.threads[this.id],
     };
   },
   computed: {
     posts() {
       const postIds = Object.values(this.thread.posts);
-      return Object.values(posts).filter((post) => postIds.includes(post['.key']));
-    },
-  },
-  methods: {
-    addPost({ post }) {
-      const postId = post['.key'];
-      this.$set(posts, postId, post);
-      this.$set(this.thread.posts, postId, postId);
-      this.$set(users[post.userId].posts, postId, postId);
+      return Object.values(this.$store.state.posts).filter((post) => postIds.includes(post['.key']));
     },
   },
 };

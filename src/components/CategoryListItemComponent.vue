@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import { forums } from '@/data.json';
 import ForumListComponent from './ForumListComponent.vue';
 
 export default {
@@ -25,7 +24,7 @@ export default {
   },
   computed: {
     categoryForums() {
-      return Object.values(forums).filter((forum) => forum.categoryId === this.category['.key']);
+      return Object.values(this.$store.state.forums).filter((forum) => forum.categoryId === this.category['.key']);
     },
   },
 };

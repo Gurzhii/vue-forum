@@ -6,17 +6,16 @@
 </template>
 
 <script>
-import { categories } from '@/data';
 import CategoryListComponent from '@/components/CategoryListComponent.vue';
 
 export default {
   components: {
     CategoryListComponent,
   },
-  data() {
-    return {
-      categories,
-    };
+  computed: {
+    categories() {
+      return this.$store.state.categories;
+    },
   },
 };
 </script>
