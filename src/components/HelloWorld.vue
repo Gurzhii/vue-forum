@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="col-full">
     <h1>Welcome to the Forum</h1>
     <ThreadList :threads="threads"/>
   </div>
@@ -14,12 +14,9 @@ export default {
   components: {
     ThreadList,
   },
-  mounted() {
-    console.log(threads);
-  },
   data() {
     return {
-      threads,
+      threads: Object.values(threads),
       posts,
       users,
     };

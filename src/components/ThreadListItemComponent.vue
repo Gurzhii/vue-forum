@@ -6,18 +6,18 @@
       </p>
       <p class="text-faded text-xsmall">
         By
-        <a href="#">Joseph Kerr</a>, {{ thread.publishedAt }}.
+        <a href="#">{{ user.username }}</a>, {{ thread.publishedAt }}.
       </p>
     </div>
 
     <div class="activity">
-      <p class="replies-count">1 reply</p>
+      <p class="replies-count">{{ repliesCount }} replies</p>
 
-      <img
+      <!-- <img
         class="avatar-medium"
         src="http://i0.kym-cdn.com/photos/images/facebook/000/010/934/46623-batman_pikachu_super.png"
         alt
-      />
+      /> -->
 
       <!-- <div>
         <p class="text-xsmall">
@@ -30,11 +30,21 @@
 </template>
 
 <script>
+import { users } from '@/data';
+
 export default {
   props: {
     thread: {
       required: true,
       type: Object,
+    },
+  },
+  computed: {
+    repliesCount() {
+      return Object.keys(this.thread.posts).length - 1;
+    },
+    user() {
+      return users[this.thread.userId];
     },
   },
 };
