@@ -2,29 +2,22 @@
   <div class="col-large push-top">
     <h1>{{ thread.title }}</h1>
     <PostListComponent :posts="posts"/>
-    <form @submit.prevent="addPost">
-      <div class="form-group">
-        <textarea
-          v-model="newPostText"
-          cols="30"
-          rows="10"
-          class="form-input"
-        ></textarea>
-      </div>
-      <div class="form-actions">
-        <button class="btn-blue">Submit</button>
-      </div>
-    </form>
+    <PostEditoComponent
+      :threadId="id"
+      @save="addPost"
+    />
   </div>
 </template>
 
 <script>
 import { threads, posts, users } from '@/data';
 import PostListComponent from '@/components/PostListComponent.vue';
+import PostEditoComponent from '@/components/PostEditorComponent.vue';
 
 export default {
   components: {
     PostListComponent,
+    PostEditoComponent,
   },
   props: {
     id: {
@@ -35,7 +28,6 @@ export default {
   data() {
     return {
       thread: threads[this.id],
-      newPostText: '',
     };
   },
   computed: {
@@ -45,19 +37,11 @@ export default {
     },
   },
   methods: {
-    addPost() {
-      const postId = `greatPost${Math.random()}`;
-      const post = {
-        text: this.newPostText,
-        publishedAt: Math.floor(Date.now() / 1000),
-        threadId: this.id,
-        userId: 'Miej9zSGMRZKDvMXzfxjVOyv3RF3',
-        '.key': postId,
-      };
+    addPost({ post }) {
+      const postId = post['.key'];
       this.$set(posts, postId, post);
       this.$set(this.thread.posts, postId, postId);
       this.$set(users[post.userId].posts, postId, postId);
-      this.newPostText = '';
     },
   },
 };
