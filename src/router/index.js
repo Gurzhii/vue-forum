@@ -5,6 +5,7 @@ import PageThreadShow from '@/views/PageThreadShow.vue';
 import PageNotFound from '@/views/PageNotFound.vue';
 import PageForum from '@/views/PageForum.vue';
 import PageCategory from '@/views/PageCategory.vue';
+import PageProfile from '@/views/PageProfile.vue';
 
 Vue.use(Router);
 
@@ -30,6 +31,12 @@ const routes = [
     path: '/thread/:id',
     name: 'ThreadShow',
     component: PageThreadShow,
+    props: true,
+  },
+  {
+    path: '/me',
+    name: 'Profile',
+    component: PageProfile,
     props: true,
   },
   {

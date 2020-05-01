@@ -12,6 +12,7 @@
     "parser": "babel-eslint"
   },
   "rules": {
+    "import/prefer-default-export": "off",
     "quotes": [
       "error",
       "single"

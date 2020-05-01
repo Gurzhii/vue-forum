@@ -5,7 +5,10 @@ import sourceData from '@/data';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: sourceData,
+  state: {
+    ...sourceData,
+    authId: 'VXjpr2WHa8Ux4Bnggym8QFLdv5C3',
+  },
   actions: {
     createPost(context, post) {
       const postId = `greatPost${Math.random()}`;
@@ -13,6 +16,11 @@ export default new Vuex.Store({
       context.commit('setPost', { post: newPost, postId });
       context.commit('appendPostToThread', { threadId: newPost.threadId, postId });
       context.commit('appendPostToUser', { postId, userId: newPost.userId });
+    },
+  },
+  getters: {
+    authUser(state) {
+      return state.users[state.authId];
     },
   },
   mutations: {
