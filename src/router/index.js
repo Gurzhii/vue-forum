@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import PageHome from '@/views/PageHome.vue';
 import PageThreadShow from '@/views/PageThreadShow.vue';
+import PageThreadCreate from '@/views/PageThreadCreate.vue';
 import PageNotFound from '@/views/PageNotFound.vue';
 import PageForum from '@/views/PageForum.vue';
 import PageCategory from '@/views/PageCategory.vue';
@@ -25,6 +26,12 @@ const routes = [
     path: '/category/:id',
     name: 'Category',
     component: PageCategory,
+    props: true,
+  },
+  {
+    path: '/thread/create/:forumId',
+    name: 'ThreadCreate',
+    component: PageThreadCreate,
     props: true,
   },
   {
