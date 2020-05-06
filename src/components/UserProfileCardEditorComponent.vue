@@ -89,23 +89,23 @@
 <script>
 export default {
   props: {
-    userPostsCount: {
-      required: true,
-      type: Number,
-    },
     user: {
       required: true,
       type: Object,
-    },
-    userThreadsCount: {
-      required: true,
-      type: Number,
     },
   },
   data() {
     return {
       currentUser: { ...this.user },
     };
+  },
+  computed: {
+    userThreadsCount() {
+      return this.$store.getters.userThreadsCount(this.user['.key']);
+    },
+    userPostsCount() {
+      return this.$store.getters.userPostsCount(this.user['.key']);
+    },
   },
   methods: {
     save() {
