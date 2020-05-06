@@ -17,6 +17,9 @@ export default new Vuex.Store({
       context.commit('appendPostToThread', { threadId: newPost.threadId, postId });
       context.commit('appendPostToUser', { postId, userId: newPost.userId });
     },
+    updateUser({ commit }, user) {
+      commit('setUser', { userId: user['.key'], user });
+    },
   },
   getters: {
     authUser(state) {
@@ -26,6 +29,9 @@ export default new Vuex.Store({
   mutations: {
     setPost(state, { post, postId }) {
       Vue.set(state.posts, postId, post);
+    },
+    setUser(state, { user, userId }) {
+      Vue.set(state.users, userId, user);
     },
     appendPostToThread(state, { postId, threadId }) {
       const thread = state.threads[threadId];
