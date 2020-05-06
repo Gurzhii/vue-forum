@@ -25,9 +25,7 @@ export default {
     save() {
       const post = {
         text: this.text,
-        publishedAt: Math.floor(Date.now() / 1000),
         threadId: this.threadId,
-        userId: 'Miej9zSGMRZKDvMXzfxjVOyv3RF3',
       };
       this.text = '';
       this.$emit('save', { post });
