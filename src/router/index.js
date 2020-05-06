@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import PageHome from '@/views/PageHome.vue';
 import PageThreadShow from '@/views/PageThreadShow.vue';
+import PageThreadEdit from '@/views/PageThreadEdit.vue';
 import PageThreadCreate from '@/views/PageThreadCreate.vue';
 import PageNotFound from '@/views/PageNotFound.vue';
 import PageForum from '@/views/PageForum.vue';
@@ -38,6 +39,12 @@ const routes = [
     path: '/thread/:id',
     name: 'ThreadShow',
     component: PageThreadShow,
+    props: true,
+  },
+  {
+    path: '/thread/:id/edit',
+    name: 'ThreadEdit',
+    component: PageThreadEdit,
     props: true,
   },
   {
