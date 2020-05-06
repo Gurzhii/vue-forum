@@ -1,11 +1,13 @@
 <template>
   <div class="flex-grid">
-    <!-- <UserProfileCard
+    <UserProfileCard
+      v-if="!this.edit"
       :userPostsCount="userPostsCount"
       :userThreadsCount="userThreadsCount"
       :user="user"
-    /> -->
+    />
      <UserProfileCardEditor
+      v-else
       :userPostsCount="userPostsCount"
       :userThreadsCount="userThreadsCount"
       :user="user"
@@ -24,7 +26,7 @@
 
 <script>
 import PostListComponent from '@/components/PostListComponent.vue';
-// import UserProfileCard from '@/components/UserProfileCardComponent.vue';
+import UserProfileCard from '@/components/UserProfileCardComponent.vue';
 import UserProfileCardEditor from '@/components/UserProfileCardEditorComponent.vue';
 import { mapGetters } from 'vuex';
 import { countObjectProperties } from '@/utils';
@@ -32,8 +34,14 @@ import { countObjectProperties } from '@/utils';
 export default {
   components: {
     PostListComponent,
-    // UserProfileCard,
+    UserProfileCard,
     UserProfileCardEditor,
+  },
+  props: {
+    edit: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     ...mapGetters({
